@@ -151,3 +151,88 @@ body {
   background: linear-gradient(90deg, transparent, rgba(200,169,110,0.15), transparent);
   border: none;
 }
+
+/* ─── Gold Shimmer Text ─── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(90deg, #C8A96E 0%, #fff9ee 40%, #E2C992 50%, #fff9ee 60%, #C8A96E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ─── Viewfinder Corner Marks ─── */
+.viewfinder {
+  position: relative;
+}
+.viewfinder::before,
+.viewfinder::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: rgba(200,169,110,0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+.viewfinder::before {
+  top: 0; left: 0;
+  border-width: 1px 0 0 1px;
+}
+.viewfinder::after {
+  bottom: 0; right: 0;
+  border-width: 0 1px 1px 0;
+}
+.viewfinder-tr::before {
+  top: 0; right: 0;
+  border-width: 1px 1px 0 0;
+}
+.viewfinder-bl::after {
+  bottom: 0; left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+/* ─── Glow Pulse ─── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Slide Underline (nav) ─── */
+.nav-underline {
+  position: absolute;
+  bottom: -2px;
+  height: 1px;
+  background: #C8A96E;
+  box-shadow: 0 0 8px rgba(200,169,110,0.6);
+  pointer-events: none;
+  transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.25s ease;
+}
+
+/* ─── Counter Number ─── */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Work Card Hover ─── */
+.work-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.work-card:hover::before {
+  opacity: 1;
+}

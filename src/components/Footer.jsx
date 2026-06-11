@@ -1,78 +1,95 @@
 import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-base border-t border-white/[0.04]">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-          {/* Brand */}
+    <footer className="bg-base border-t border-zinc-900">
+
+      {/* ── Main ── */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+
+          {/* Brand + tagline */}
           <div className="md:col-span-5">
-            <div className="flex items-center gap-2.5 mb-6">
-              <div className="w-8 h-8 rounded-md bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center">
                 <span className="font-display text-sm text-base leading-none">N</span>
               </div>
-              <span className="font-display text-xl tracking-wider text-white">NEXUS AI</span>
+              <span className="font-display text-2xl tracking-widest text-white">NEXUS AI</span>
             </div>
-            <p className="font-body text-white/35 text-[13px] leading-relaxed max-w-xs mb-8">
-              Where Brands Become Cinema. AI-generated commercials, brand films, and campaign content — delivered at speed, without compromise.
+            <p className="font-body text-sm text-zinc-400 leading-[2] max-w-xs mb-10">
+              Where brands become cinema. AI-generated commercials and brand films — delivered at speed, without compromise.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-md bg-card/50 border border-white/[0.06] font-mono text-[10px] text-white/40 hover:text-gold hover:border-gold/20 transition-all duration-300"
-              >
-                Instagram
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-md bg-card/50 border border-white/[0.06] font-mono text-[10px] text-white/40 hover:text-gold hover:border-gold/20 transition-all duration-300"
-              >
-                LinkedIn
-              </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 font-mono text-[10px] text-gold uppercase tracking-[0.25em] hover:gap-3 transition-all duration-300"
+            >
+              Start a project
+              <ArrowUpRight size={13} />
+            </Link>
+          </div>
+
+          {/* Spacer */}
+          <div className="hidden md:block md:col-span-1" />
+
+          {/* Navigation */}
+          <div className="md:col-span-2">
+            <h4 className="font-mono text-[9px] text-zinc-500 uppercase tracking-[0.4em] mb-8">Pages</h4>
+            <div className="flex flex-col gap-5">
+              {[['/', 'Home'], ['/work', 'Work'], ['/services', 'Services'], ['/about', 'About'], ['/contact', 'Contact']].map(([to, label]) => (
+                <Link key={to} to={to} className="font-body text-sm text-zinc-400 hover:text-gold transition-colors duration-300">
+                  {label}
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Nav */}
-          <div className="md:col-span-3 md:col-start-7">
-            <h4 className="font-mono text-[10px] text-white/25 uppercase tracking-[0.2em] mb-6">Navigation</h4>
-            <div className="flex flex-col gap-4">
-              <Link to="/work" className="font-body text-[13px] text-white/50 hover:text-gold transition-colors duration-300">Work</Link>
-              <Link to="/services" className="font-body text-[13px] text-white/50 hover:text-gold transition-colors duration-300">Services</Link>
-              <Link to="/about" className="font-body text-[13px] text-white/50 hover:text-gold transition-colors duration-300">About</Link>
-              <Link to="/contact" className="font-body text-[13px] text-white/50 hover:text-gold transition-colors duration-300">Contact</Link>
+          {/* Services */}
+          <div className="md:col-span-2">
+            <h4 className="font-mono text-[9px] text-zinc-500 uppercase tracking-[0.4em] mb-8">Services</h4>
+            <div className="flex flex-col gap-5">
+              {['AI Ad Production', 'Brand Films', 'Product Commercials', 'Social Campaigns', 'Strategy'].map((s) => (
+                <Link key={s} to="/services" className="font-body text-sm text-zinc-400 hover:text-gold transition-colors duration-300">
+                  {s}
+                </Link>
+              ))}
             </div>
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-3">
-            <h4 className="font-mono text-[10px] text-white/25 uppercase tracking-[0.2em] mb-6">Get in Touch</h4>
-            <div className="flex flex-col gap-4">
-              <span className="font-body text-[13px] text-white/50">hello@nexusai.studio</span>
-              <span className="font-body text-[13px] text-white/50">Dubai, UAE</span>
-              <Link to="/contact" className="inline-flex items-center gap-2 font-mono text-[10px] text-gold/70 uppercase tracking-[0.15em] mt-2 hover:text-gold transition-colors duration-300">
-                Start a project →
-              </Link>
+          <div className="md:col-span-2">
+            <h4 className="font-mono text-[9px] text-zinc-500 uppercase tracking-[0.4em] mb-8">Contact</h4>
+            <div className="flex flex-col gap-5">
+              <a href="mailto:hello@nexusai.studio" className="font-body text-sm text-zinc-400 hover:text-gold transition-colors duration-300">
+                hello@nexusai.studio
+              </a>
+              <span className="font-body text-sm text-zinc-400">Dubai, UAE</span>
+              <div className="flex gap-4 mt-2">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-white/30 hover:text-gold transition-colors duration-300 uppercase tracking-[0.2em]">
+                  IG
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-white/30 hover:text-gold transition-colors duration-300 uppercase tracking-[0.2em]">
+                  LI
+                </a>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/[0.04]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-7 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-[10px] text-white/20 tracking-wide">
-            &copy; 2026 NEXUS AI. ALL PRODUCTIONS POWERED BY GENERATIVE INTELLIGENCE.
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-zinc-900 mx-0 px-6 md:px-12">
+        <div className="max-w-[1400px] mx-auto py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-mono text-[10px] text-zinc-600 tracking-[0.15em] uppercase">
+            &copy; 2026 NEXUS AI &mdash; All productions powered by generative intelligence
           </p>
-          <p className="font-mono text-[10px] text-white/20 tracking-wide">
-            Sharjah / Dubai, UAE
+          <p className="font-mono text-[10px] text-zinc-600 tracking-[0.15em] uppercase">
+            Dubai &mdash; Sharjah, UAE
           </p>
         </div>
       </div>
+
     </footer>
   )
 }

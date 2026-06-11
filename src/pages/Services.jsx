@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 
 const services = [
@@ -27,7 +27,7 @@ const services = [
   },
   {
     title: 'Campaign Strategy & Creative Direction',
-    desc: 'Before a single frame is generated, we develop the strategic foundation. Brand positioning, audience mapping, creative territories, and visual language — everything your campaign needs to resonate with the right people at the right time.',
+    desc: 'Before a single frame is generated, we develop the strategic foundation. Brand positioning, audience mapping, creative territories, and visual language — everything your campaign needs to resonate with the right people.',
     deliverables: ['Brand positioning documents', 'Audience & channel strategy', 'Creative territory decks', 'Visual language guidelines', 'Campaign architecture'],
   },
   {
@@ -47,38 +47,37 @@ function ServiceBlock({ service, index }) {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="py-16 md:py-20"
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="py-20 md:py-28"
     >
-      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center`}>
+      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center`}>
         {/* Visual */}
         <div className={`${isReversed ? 'lg:order-2' : ''}`}>
-          <div className="aspect-[16/10] rounded-xl bg-card/50 border border-white/[0.06] relative overflow-hidden group">
+          <div className="aspect-[16/10] rounded-2xl bg-card/50 border border-white/[0.05] relative overflow-hidden group viewfinder">
             <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.06] via-transparent to-gold/[0.02]" />
-            <div className="absolute inset-0 grid-pattern opacity-30" />
+            <div className="absolute inset-0 grid-texture" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <span className="font-display text-5xl text-gold/20">0{index + 1}</span>
-                <p className="font-mono text-[10px] text-white/15 uppercase tracking-widest mt-2">{service.title}</p>
+                <span className="font-display text-7xl text-gold/15 block">0{index + 1}</span>
+                <p className="font-mono text-[9px] text-white/15 uppercase tracking-[0.4em] mt-2">{service.title}</p>
               </div>
             </div>
-            {/* Decorative corner */}
-            <div className="absolute top-0 left-0 w-20 h-20 border-l border-t border-gold/10 rounded-tl-xl" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-r border-b border-gold/10 rounded-br-xl" />
           </div>
         </div>
 
         {/* Content */}
         <div className={`${isReversed ? 'lg:order-1' : ''}`}>
-          <div className="relative pl-6 border-l-2 border-gold/40">
-            <span className="font-mono text-[10px] text-gold/60 uppercase tracking-[0.2em]">Service 0{index + 1}</span>
-            <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-3 mb-5">{service.title}</h3>
-            <p className="font-body text-[14px] text-white/50 leading-[1.8] mb-8">{service.desc}</p>
-            <ul className="space-y-3">
+          <div className="pl-8 border-l border-gold/25">
+            <span className="font-mono text-[10px] text-gold/50 uppercase tracking-[0.4em] block mb-5">Service 0{index + 1}</span>
+            <h3 className="font-display text-white mb-8 leading-[0.88]" style={{ fontSize: 'clamp(2rem,3.5vw,3.5rem)' }}>
+              {service.title.toUpperCase()}
+            </h3>
+            <p className="font-body text-[14px] text-white/40 leading-[2] mb-10">{service.desc}</p>
+            <ul className="space-y-4">
               {service.deliverables.map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold/60 flex-shrink-0" />
-                  <span className="font-body text-[13px] text-white/40">{item}</span>
+                <li key={i} className="flex items-center gap-4">
+                  <span className="w-1 h-1 rounded-full bg-gold/50 flex-shrink-0" />
+                  <span className="font-body text-[13px] text-white/35">{item}</span>
                 </li>
               ))}
             </ul>
@@ -86,9 +85,8 @@ function ServiceBlock({ service, index }) {
         </div>
       </div>
 
-      {/* Divider between blocks */}
       {index < services.length - 1 && (
-        <div className="mt-16 md:mt-20 section-divider" />
+        <hr className="mt-[10vh] hr-gold" />
       )}
     </motion.div>
   )
@@ -97,59 +95,71 @@ function ServiceBlock({ service, index }) {
 export default function Services() {
   return (
     <PageTransition>
-      {/* Hero */}
-      <section className="pt-36 pb-20 px-6 bg-base relative overflow-hidden">
+
+      {/* ── Hero ── */}
+      <section className="pt-36 pb-24 px-6 md:px-12 bg-base relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(200,169,110,0.06),transparent_70%)]" />
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-[1400px] mx-auto relative">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="font-mono text-[10px] text-gold/70 uppercase tracking-[0.3em]"
+            className="font-mono text-[10px] text-gold/50 uppercase tracking-[0.5em] block mb-8 flex items-center gap-3"
           >
+            <span className="w-6 h-px bg-gold/30 inline-block" />
             Services
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-display text-5xl sm:text-7xl md:text-8xl text-white mt-4"
+            transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-white leading-[0.88]"
+            style={{ fontSize: 'clamp(3rem,7vw,8rem)' }}
           >
-            WHAT WE BUILD
+            WHAT WE<br />BUILD
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="font-body text-white/45 text-base md:text-lg max-w-2xl mt-6 leading-relaxed"
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="font-body text-white/35 text-base md:text-lg max-w-xl mt-8 leading-[1.9]"
           >
             AI-powered production for brands that demand cinematic quality without the overhead of traditional pipelines. Every frame shaped by human creative direction, generated at machine speed.
           </motion.p>
         </div>
       </section>
 
-      {/* Services List */}
-      <section className="px-6 pb-24 bg-base">
-        <div className="max-w-7xl mx-auto">
+      <hr className="hr-gold mx-[5vw]" />
+
+      {/* ── Services List ── */}
+      <section className="px-6 md:px-12 bg-base">
+        <div className="max-w-[1400px] mx-auto">
           {services.map((service, i) => (
             <ServiceBlock key={service.title} service={service} index={i} />
           ))}
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-28 px-6 bg-section relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(200,169,110,0.04),transparent_70%)]" />
-        <div className="max-w-4xl mx-auto text-center relative">
-          <h2 className="font-heading text-2xl md:text-4xl font-bold text-white mb-4">Every production starts with a brief.</h2>
-          <p className="font-body text-white/40 text-sm mb-10">Tell us what you need. We handle the rest.</p>
-          <Link to="/contact" className="btn-primary">
+      <hr className="hr-gold mx-[5vw]" />
+
+      {/* ── CTA ── */}
+      <section className="py-24 md:py-32 px-6 md:px-12 relative overflow-hidden text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_55%_at_50%_50%,rgba(200,169,110,0.05),transparent_70%)]" />
+        <div className="max-w-[900px] mx-auto relative">
+          <span className="font-mono text-[10px] text-gold/40 uppercase tracking-[0.5em] block mb-10">Start Now</span>
+          <h2 className="font-display text-white leading-[0.85] mb-10" style={{ fontSize: 'clamp(2.5rem,6vw,7rem)' }}>
+            EVERY PRODUCTION<br /><span className="text-shimmer">STARTS WITH A BRIEF.</span>
+          </h2>
+          <p className="font-body text-white/30 text-[15px] mb-14 max-w-sm mx-auto leading-[1.9]">
+            Tell us what you need. We handle the rest.
+          </p>
+          <Link to="/contact" className="btn-primary group">
             <span>Start a Project</span>
-            <ArrowRight size={14} className="ml-2" />
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
+
     </PageTransition>
   )
 }
