@@ -97,7 +97,7 @@ export default function Services() {
     <PageTransition>
 
       {/* ── Hero ── */}
-      <section className="pt-36 pb-24 px-6 md:px-12 bg-base relative overflow-hidden">
+      <section className="pt-40 md:pt-44 pb-24 px-6 md:px-12 bg-base relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(200,169,110,0.06),transparent_70%)]" />
         <div className="max-w-[1400px] mx-auto relative">
           <motion.span
